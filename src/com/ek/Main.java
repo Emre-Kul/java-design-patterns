@@ -33,7 +33,7 @@ public class Main {
         Main.runChainOfResponsibilityPattern();
         Main.runSingletonPattern();
         Main.runAdapterPattern();
-        Main.runFacade();
+        Main.runFacadePattern();
     }
 
     private static void runStrategyPattern() {
@@ -99,7 +99,7 @@ public class Main {
         dbConnection.run();
     }
 
-    private static void runFacade() {
+    private static void runFacadePattern() {
         AtmFacade atmFacade = new AtmFacade();
         atmFacade.withdraw("pin", 1000);
     }
