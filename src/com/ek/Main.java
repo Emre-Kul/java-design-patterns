@@ -20,6 +20,9 @@ import com.ek.patterns.strategy.HeapSortStrategy;
 import com.ek.patterns.strategy.ISortStrategy;
 import com.ek.patterns.strategy.MergeSortStrategy;
 import com.ek.patterns.strategy.Sorter;
+import com.ek.patterns.templatemethod.AutomotiveRobot;
+import com.ek.patterns.templatemethod.CookieRobot;
+import com.ek.patterns.templatemethod.RobotTemplate;
 
 import java.util.ArrayList;
 
@@ -34,6 +37,7 @@ public class Main {
         Main.runSingletonPattern();
         Main.runAdapterPattern();
         Main.runFacadePattern();
+        Main.runTemplateMethodPattern();
     }
 
     private static void runStrategyPattern() {
@@ -101,6 +105,13 @@ public class Main {
 
     private static void runFacadePattern() {
         AtmFacade atmFacade = new AtmFacade();
-        atmFacade.withdraw("pin", 1000);
+        atmFacade.withdrawal("pin", 1000);
+    }
+
+    private static void runTemplateMethodPattern() {
+        RobotTemplate rt = new AutomotiveRobot();
+        rt.go();
+        rt = new CookieRobot();
+        rt.go();
     }
 }

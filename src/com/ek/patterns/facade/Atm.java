@@ -27,7 +27,7 @@ public class Atm {
         return true;
     }
 
-    public void withdraw() {
+    public void withdrawal() {
         System.out.println("Withdraw");
     }
 
