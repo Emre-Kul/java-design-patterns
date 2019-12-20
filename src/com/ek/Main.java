@@ -1,6 +1,7 @@
 package com.ek;
 
 import com.ek.patterns.adapter.DBConnection;
+import com.ek.patterns.builder.*;
 import com.ek.patterns.chainofresponsibility.ARequestHandler;
 import com.ek.patterns.chainofresponsibility.BRequestHandler;
 import com.ek.patterns.chainofresponsibility.RequestHandler;
@@ -38,6 +39,7 @@ public class Main {
         Main.runAdapterPattern();
         Main.runFacadePattern();
         Main.runTemplateMethodPattern();
+        Main.runBuilderPattern();
     }
 
     private static void runStrategyPattern() {
@@ -113,5 +115,28 @@ public class Main {
         rt.go();
         rt = new CookieRobot();
         rt.go();
+    }
+
+    private static void runBuilderPattern() {
+        CarProducer carProducer = new CarProducer();
+        ICarBuilder automaticCarBuilder = new AutomaticCarBuilder();
+        ICarBuilder manualCarBuilder = new ManualCarBuilder();
+
+        carProducer.buildFastCar(automaticCarBuilder);
+        Car automaticFastCar = automaticCarBuilder.getCar();
+        automaticFastCar.printOut();
+
+        carProducer.buildSlowCar(automaticCarBuilder);
+        Car automaticSlowCar = automaticCarBuilder.getCar();
+        automaticSlowCar.printOut();
+
+        carProducer.buildFastCar(manualCarBuilder);
+        Car manualFastCar = manualCarBuilder.getCar();
+        manualFastCar.printOut();
+
+        carProducer.buildSlowCar(manualCarBuilder);
+        Car manualSlowCar = manualCarBuilder.getCar();
+        manualSlowCar.printOut();
+
     }
 }
