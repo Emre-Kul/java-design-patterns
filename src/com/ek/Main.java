@@ -6,6 +6,9 @@ import com.ek.patterns.chainofresponsibility.ARequestHandler;
 import com.ek.patterns.chainofresponsibility.BRequestHandler;
 import com.ek.patterns.chainofresponsibility.RequestHandler;
 import com.ek.patterns.facade.AtmFacade;
+import com.ek.patterns.iterator.Basket;
+import com.ek.patterns.iterator.BasketIterator;
+import com.ek.patterns.iterator.Item;
 import com.ek.patterns.observer.ClickEvent;
 import com.ek.patterns.observer.KeyboardEvent;
 import com.ek.patterns.observer.Subject;
@@ -40,6 +43,7 @@ public class Main {
         Main.runFacadePattern();
         Main.runTemplateMethodPattern();
         Main.runBuilderPattern();
+        Main.runIteratorPattern();
     }
 
     private static void runStrategyPattern() {
@@ -139,4 +143,17 @@ public class Main {
         manualSlowCar.printOut();
 
     }
+
+    private static void runIteratorPattern() {
+        Basket basket = new Basket();
+        basket.addItem(new Item("XX", 9.90f));
+        basket.addItem(new Item("YY", 8.90f));
+        basket.addItem(new Item("ZZ", 92.90f));
+        BasketIterator basketIterator = basket.getIterator();
+        while (basketIterator.hasNext()) {
+            Item item = (Item)basketIterator.next();
+            item.print();
+        }
+    }
+
 }
